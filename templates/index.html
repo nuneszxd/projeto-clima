@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar CLima</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+
+    <h1>Verificar CLima</h1>
+
+    <form action="/clima" method="POST">
+
+        <label for="cidade">Digite o nome da cidade: </label>
+        <input type="text" id="cidade" name="cidade" required>
+        <button type="submit">Ver Clima</button>
+
+    </form>
+
+    {% if temperatura %}
+        <h2>Clima em {{ cidade }}</h2>
+        <p>Temperatura: {{ temperatura }}</p>
+        <p>Desctrição:  {{ descricao }}</p>
+        <p>Umidade:  {{ umidade }}</p>
+    {% elif erro %}
+        <p style="color :red;">{{  erro }}</p>
+    {% endif %}
+
+</body>
+</html>
